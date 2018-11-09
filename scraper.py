@@ -9,18 +9,35 @@ from urllib.request import urlopen
 # looks up song name on google
 def google_search(look):
     for j in search(look, tld="com", num=1, stop=1, pause=2):
-        # stores url into variable
-        url = j
 
-    # uses bs4 to open the url after urllib gets the doc
-    soup = BeautifulSoup(urlopen(j), 'html.parser')
-    # "prettifies" it (makes it readable) and prints)
-    print(soup.find_all("div", {"class": None}))
+        # "prettifies" it (makes it readable) and prints)
+        # uses bs4 to open the url after urllib gets the doc
+        soup = BeautifulSoup(urlopen(j), 'html.parser')
+    # uses bs4 find all method to extract text from div containing lyrics
+    div = soup.find_all("div", {"class": None})
+    # converts div text to string and passes into remove_html_tags
+    div = str(div)
+    remove_html_tags(div)
 
 
-# song name to search and uses azlyrics.com exclusively
-print("Enter song name: ")
+def remove_html_tags(refine):
+    # removes html tags from string using regex
+    import re
+    clean = re.compile('<.*?>')
+    print(re.sub(clean, '', refine))
+
+
+# song name to search and uses azlyrics.com (exclusively)
+print("Enter song name and artist: ")
 query = input()
 query += ' azlyrics'
+# pass into function to search up lyrics
 google_search(query)
+
+
+
+
+
+
+
 
