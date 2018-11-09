@@ -11,27 +11,16 @@ def google_search(look):
     for j in search(look, tld="com", num=1, stop=1, pause=2):
         # stores url into variable
         url = j
-        # uses bs4 to open the url after urllib gets the doc
-        soup = BeautifulSoup(urlopen(j), 'html.parser')
-        # "prettifies" it (makes it readable) and prints
-        print(j)
-        # removes html tags and elements
-        for script in soup(["script", "style"]):
-            script.extract()
 
-        # get text
-        text = soup.get_text()
-        clean_text(text)
-
-
-def clean_text(text):
-    refined = str(text)
-    print(refined.split())
+    # uses bs4 to open the url after urllib gets the doc
+    soup = BeautifulSoup(urlopen(j), 'html.parser')
+    # "prettifies" it (makes it readable) and prints)
+    print(soup.find_all("div", {"class": None}))
 
 
 # song name to search and uses azlyrics.com exclusively
 print("Enter song name: ")
 query = input()
-query += 'azlyrics'
+query += ' azlyrics'
 google_search(query)
 
