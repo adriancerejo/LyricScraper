@@ -1,5 +1,7 @@
 # LyricScraper
 
+Bug where sometimes instead of printing lyrics the youtube page is printed and if exe closes its due to an error in finding lyrics
+
 EXE is in dist folder (scraper.exe, must extract before executing)
  
  This script uses azlyrics.com to scrape the lyrics from the user inputted song name and artist.
