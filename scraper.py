@@ -26,6 +26,8 @@ def remove_html_tags(refine):
     import re
     clean = re.compile('<.*?>')
     print(re.sub(clean, '', refine))
+    if video == 'n':
+        close_prompt = input("Press enter to exit")
 
 
 def youtube_link(ytfind):
