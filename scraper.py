@@ -4,7 +4,7 @@ from googlesearch import search
 
 # looks up song name on google
 def google_search(look):
-    for i in search(look, tld="com", num=1, stop=1, pause=2):
+    for i in search(look, tld="ca", num=1, stop=1, pause=2):
 
         # beautiful soup library to make html file readable
         from bs4 import BeautifulSoup
@@ -30,17 +30,18 @@ def remove_html_tags(refine):
 
 def youtube_link(ytfind):
     import webbrowser
-    for i in search(ytfind, tld="com", num=1, stop=1, pause=2):
+    for i in search(ytfind, tld="ca", num=1, stop=1, pause=2):
         webbrowser.open(i, new=2)
+    close_prompt = input("Press enter to exit")
 
 
 # song name to search and uses azlyrics.com (exclusively)
 print("Enter song name and artist: ")
 query = input()
 queryhold = query + " audio music video"
-query += ' azlyrics'
+query += " azlyrics"
 # pass into function to search up lyrics
-print("Do you want to watch the music video?(y/n)")
+print("Do you want to listen to the song?(y/n)")
 video = input()
 
 if video == 'n':
@@ -50,7 +51,7 @@ elif video == 'y':
     youtube_link(queryhold)
 else:
     print("Error")
-    exit()
+    close_prompt = input("Press enter to exit")
 
 
 
