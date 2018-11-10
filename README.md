@@ -1,4 +1,6 @@
 # LyricScraper
+
+EXE is in dist folder (scraper.exe, must extract before executing)
  
  This script uses azlyrics.com to scrape the lyrics from the user inputted song name and artist.
  
