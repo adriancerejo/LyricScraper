@@ -1,7 +1,8 @@
 # LyricScraper
  
- UNDER DEVELOPMENT, WILL KEEP UPDATING AS I WORK ON IT
+ This script uses azlyrics.com to scrape the lyrics from the user inputted song name and artist.
+ There is an option to open the music video if desired.
  
- User inputs the name of a song and this program will scrape the lyrics
- 
- Will add more stuff here once I make more progress
+ This code utilizes the google search module to look up the users input and get the url
+ Beautifulsoup4 is used to make the html file readable after urllib requests the doc behind html
+ Read comments for more clarification
