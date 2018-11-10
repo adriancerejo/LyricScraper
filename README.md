@@ -9,3 +9,5 @@
  Beautifulsoup4 is used to make the html file readable after urllib requests the doc behind html
  
  Read comments for more clarification
+
+# NOT ALL SONGS WORK 
