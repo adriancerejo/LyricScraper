@@ -41,7 +41,7 @@ def youtube_link(ytfind):
 print("Enter song name and artist: ")
 query = input()
 queryhold = query + " audio music video"
-query += " azlyrics"
+query += " site:azlyrics.com"
 # pass into function to search up lyrics
 print("Do you want to listen to the song?(y/n)")
 video = input()
