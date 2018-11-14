@@ -1,5 +1,7 @@
 # LyricScraper
 
+ If there are multiple song names that are the same, you must include the artist
+
 .EXE only works on windows
 
 Fixed : Bug where sometimes instead of printing lyrics the youtube page is printed and if exe closes its due to an error in finding lyrics
