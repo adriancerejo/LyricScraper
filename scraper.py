@@ -12,7 +12,7 @@ def google_search(look):
         # urllib lib to request document behind url
         from urllib.request import urlopen
 
-        # "prettifies" it (makes it readable) and prints)
+        # "prettifies" it (makes it readable) and prints
         # uses bs4 to open the url after urllib gets the doc
         soup = BeautifulSoup(urlopen(i), 'html.parser')
     # uses bs4 find all method to extract text from div containing lyrics
