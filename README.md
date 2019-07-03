@@ -1,7 +1,4 @@
-# Currently working on implementing this script into C# for a better UI
-
 # Lyrics Scraper
-
 
  Follow in-line comments for clarification
  
