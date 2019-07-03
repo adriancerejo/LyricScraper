@@ -4,22 +4,24 @@ import os
 
 # looks up song name on google
 def google_search(look):
-    for i in search(look, tld="ca", num=1, stop=1, pause=2):
+    try:
+        for i in search(look, tld="ca", num=1, stop=1, pause=2):
 
-        # beautiful soup library to make html file readable
-        from bs4 import BeautifulSoup
+            # beautiful soup library to make html file readable
+            from bs4 import BeautifulSoup
 
-        # urllib lib to request document behind url
-        from urllib.request import urlopen
+            # urllib lib to request document behind url
+            from urllib.request import urlopen
 
-        # "prettifies" it (makes it readable) and prints
-        # uses bs4 to open the url after urllib gets the doc
-        soup = BeautifulSoup(urlopen(i), 'html.parser')
-    # uses bs4 find all method to extract text from div containing lyrics
-    div = soup.find_all("div", {"class": None})
-    # converts div text to string and passes into remove_html_tags
-    remove_html_tags(str(div))
-
+            # "prettifies" it (makes it readable) and prints
+            # uses bs4 to open the url after urllib gets the doc
+            soup = BeautifulSoup(urlopen(i), 'html.parser')
+        # uses bs4 find all method to extract text from div containing lyrics
+        div = soup.find_all("div", {"class": None})
+        # converts div text to string and passes into remove_html_tags
+        remove_html_tags(str(div))
+    except:
+        print("song not found")
 
 def remove_html_tags(refine):
     # removes html tags from string using regex
@@ -59,4 +61,5 @@ while 1:
         requestSong()
     else:
         os.system('clear')
+        os.system('cls')
         break
