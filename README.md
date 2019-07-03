@@ -1,11 +1,6 @@
-# LyricScraper
+# Lyrics Scraper
 
- If there are multiple song names that are the same, you must include the artist. Most english songs work.
-
-.EXE only works on windows. EXE is in dist folder (scraper.exe, must extract before executing).
- 
- This script uses azlyrics.com to scrape the lyrics from the user inputted song name and artist. There is an option to open the music    video if desired.
-  
- This code utilizes the google search module to look up the users input and get the url. Beautifulsoup4 is used to make the html file readable after urllib requests the doc behind html.
- 
- Read comments for more clarification.
+ Follow in-line comments for clarification
+ This script uses the googlesearch module to look up the song and get the url
+ BeautifulSoup4 then makes the html file readable and urllib retrieves the actual html file to print out the lyrics
+ All lyrics are accessed through azlyrics.com
