@@ -40,7 +40,7 @@ def requestSong():
     # song name to search and uses azlyrics.com (exclusively)
     print("Enter song name and artist: ")
     name = input()
-    ytSearch = name + " audio music video"
+    ytSearch = name + " official music video"
     name += " site:azlyrics.com"
     # pass into function to search up lyrics
     print("Do you want to listen to the song?(y/n)")
