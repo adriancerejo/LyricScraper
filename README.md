@@ -13,4 +13,5 @@
  * All lyrics are accessed through azlyrics.com
  
 ## Todo:
-- Add UI using a python library alongside a yt video player
+- [X] Add UI using a python library
+- [ ] Add youtube player inside application window
