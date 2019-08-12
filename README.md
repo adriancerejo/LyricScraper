@@ -2,7 +2,7 @@
 
  Follow in-line comments for clarification
 
- **Usage**
+ ## Usage
  
  Run scraper.exe in the output folder (only works on windows).
  
@@ -12,3 +12,5 @@
  * BeautifulSoup4 then makes the html file readable and urllib retrieves the actual html file to print out the lyrics
  * All lyrics are accessed through azlyrics.com
  
+## Todo:
+- Add UI using a python library alongside a yt video player
