@@ -23,13 +23,19 @@ class searchSong:
             # converts div text to string and passes into remove_html_tags
             return searchSong.remove_html_tags(str(div))
         except:
-            print("song not found")
+            songLyrics = "Error: Song Not Found \n(Check spelling/Enter Artist Name)"
+            return songLyrics
     
     def remove_html_tags(refine):
         # removes html tags from string using regex
         import re
         clean = re.compile('<.*?>')
-        songLyrics = re.sub(clean, '', refine)
+        lyrics = re.sub(clean, '', refine)
+        lyrics = str(lyrics)
+        lyrics = lyrics.replace('[', '')
+        lyrics = lyrics.replace(']', '')
+        lyrics = lyrics.replace(',', '', 1)
+        songLyrics = lyrics
         return str(songLyrics)
         
     def youtube_link(ytfind):

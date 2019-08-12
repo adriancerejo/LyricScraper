@@ -2,13 +2,17 @@ import os
 import search as song
 import tkinter as tk
 from tkinter import *
+
+
 lyrics = ""
-        
-        
+      
 root = tk.Tk()
-vscrollbar = tk.Scrollbar(root)
+s = tk.Scrollbar(root)
 
 root.geometry("1200x800") # Width X Height
+
+canvas = Canvas(root, width=500, height=600, yscrollcommand=s.set)
+
 
 lblTitle = tk.Label(root, text='Lyrics Scraper')
 lblTitle.place(x= 24, y=10)
@@ -22,34 +26,30 @@ lblSongName.config(font=('helvetica', 10))
 txtSongName = tk.Entry (root) 
 txtSongName.place(x=24, y=55)
 
-# def getLyrics ():
+def on_mousewheelup(event):
+    canvas.yview_scroll(-1, "units")
+
+def on_mousewheeldown(event):
+    canvas.yview_scroll(1, "units")
     
-#     x1 = entry1.get()
     
-#     lyrics = song.searchSong.google_search(x1)
-#     print(lyrics)
-    
-#     label4 = tk.Label(root, text= float(x1)**0.5,font=('helvetica', 10, 'bold'))
-#     canvas1.create_window(200, 230, window=label4)
+canvas.bind_all("<Button-5>", on_mousewheeldown)
+canvas.bind_all("<Button-4>", on_mousewheelup)
 
 def getSong(songName):
-    lyrics = song.searchSong.google_search(songName + " site:azlyrics.com")
-    print(lyrics)
-        
-    canvas = Canvas(root, width=500, height=600, yscrollcommand=vscrollbar.set)
 
-    vscrollbar.config(command=canvas.yview)
-    vscrollbar.pack(side=tk.RIGHT, fill=tk.Y) 
-    canvas.create_text(10, -45, anchor=NW, text=lyrics)
+    lyrics = song.searchSong.google_search(songName + " site:azlyrics.com")
+    s.config(command=canvas.yview)
+    s.pack(side=tk.RIGHT, fill=tk.Y) 
+    canvas.create_text(10, 10, anchor=NW, text=lyrics)
     canvas.place(relx=0.02, rely=.15)
-    root.update()
+
     canvas.config(scrollregion=canvas.bbox("all"))
     
     # ytSearch = name + " official music video"
     # song.searchSong.youtube_link(ytSearch)
 
 def requestSong():
-
     songName = txtSongName.get()
     getSong(songName)
 
