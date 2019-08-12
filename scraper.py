@@ -1,65 +1,66 @@
-# google library to search songs
-from googlesearch import search
 import os
+import search as song
+import tkinter as tk
+from tkinter import *
+lyrics = ""
+        
+        
+root = tk.Tk()
+vscrollbar = tk.Scrollbar(root)
 
-# looks up song name on google
-def google_search(look):
-    try:
-        for i in search(look, tld="ca", num=1, stop=1, pause=2):
+root.geometry("1200x800") # Width X Height
 
-            # beautiful soup library to make html file readable
-            from bs4 import BeautifulSoup
+lblTitle = tk.Label(root, text='Lyrics Scraper')
+lblTitle.place(x= 24, y=10)
+lblTitle.config(font=('helvetica', 14))
 
-            # urllib lib to request document behind url
-            from urllib.request import urlopen
-
-            # "prettifies" it (makes it readable) and prints
-            # uses bs4 to open the url after urllib gets the doc
-            soup = BeautifulSoup(urlopen(i), 'html.parser')
-        # uses bs4 find all method to extract text from div containing lyrics
-        div = soup.find_all("div", {"class": None})
-        # converts div text to string and passes into remove_html_tags
-        remove_html_tags(str(div))
-    except:
-        print("song not found")
-
-def remove_html_tags(refine):
-    # removes html tags from string using regex
-    import re
-    clean = re.compile('<.*?>')
-    print(re.sub(clean, '', refine))
+lblSongName = tk.Label(root, text='Enter Song:')
+lblSongName.place(x= 24, y=35)
+lblSongName.config(font=('helvetica', 10))
 
 
-def youtube_link(ytfind):
-    import webbrowser
-    for i in search(ytfind, tld="ca", num=1, stop=1, pause=2):
-        webbrowser.open(i, new=2)
+txtSongName = tk.Entry (root) 
+txtSongName.place(x=24, y=55)
 
+# def getLyrics ():
+    
+#     x1 = entry1.get()
+    
+#     lyrics = song.searchSong.google_search(x1)
+#     print(lyrics)
+    
+#     label4 = tk.Label(root, text= float(x1)**0.5,font=('helvetica', 10, 'bold'))
+#     canvas1.create_window(200, 230, window=label4)
+
+def getSong(songName):
+    lyrics = song.searchSong.google_search(songName + " site:azlyrics.com")
+    print(lyrics)
+        
+    canvas = Canvas(root, width=500, height=600, yscrollcommand=vscrollbar.set)
+
+    vscrollbar.config(command=canvas.yview)
+    vscrollbar.pack(side=tk.RIGHT, fill=tk.Y) 
+    canvas.create_text(10, -45, anchor=NW, text=lyrics)
+    canvas.place(relx=0.02, rely=.15)
+    root.update()
+    canvas.config(scrollregion=canvas.bbox("all"))
+    
+    # ytSearch = name + " official music video"
+    # song.searchSong.youtube_link(ytSearch)
 
 def requestSong():
-    # song name to search and uses azlyrics.com (exclusively)
-    print("Enter song name and artist: ")
-    name = input()
-    ytSearch = name + " official music video"
-    name += " site:azlyrics.com"
-    # pass into function to search up lyrics
-    print("Do you want to listen to the song?(y/n)")
-    video = input()
 
-    if video == 'n':
-        google_search(name)
-    elif video == 'y':
-        google_search(name)
-        youtube_link(ytSearch)
+    songName = txtSongName.get()
+    getSong(songName)
+
+    # canvas.create_text(10, 90, text='something')
+    # canvas.focus_set()
+    # canvas.pack(expand=YES, fill=BOTH)
+    # root.mainloop()
 
 
-while 1:
-    cont = input("To use type 's' and to exit hit enter.\n")
-    if cont == 's':
-        os.system('clear')
-        os.system('cls')
-        requestSong()
-    else:
-        os.system('clear')
-        os.system('cls')
-        break
+btnSearch = tk.Button(text='Get Lyrics', command=requestSong,  bg='brown', fg='white', font=('helvetica', 9, 'bold'))
+btnSearch.place(x=24, y=85)
+
+root.mainloop()
+
