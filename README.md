@@ -14,4 +14,4 @@
  
 ## Todo:
 - [X] Add UI using a python library
-- [ ] Add youtube player inside application window
+- [X] Add youtube player inside application window (I tried to find ways to embed a yt player into tkinter however I could not find a way and so I resorted to simply opening the song in a browser window)
