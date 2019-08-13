@@ -43,8 +43,7 @@ class searchSong:
         # return the lyrics as a string
         return str(songLyrics)
       
-    #### TODO: ADD A YOUTUBE PLAYER WITHIN THE APPLICATION WINDOW ####   
-    # def youtube_link(ytfind):
-    #     import webbrowser
-    #     for i in search(ytfind, tld="ca", num=1, stop=1, pause=2):
-    #         webbrowser.open(i, new=2)
+    def youtube_link(ytfind):
+        import webbrowser
+        for i in search(ytfind, tld="ca", num=1, stop=1, pause=2):
+            webbrowser.open(i, new=2)
