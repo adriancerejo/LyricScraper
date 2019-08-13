@@ -4,13 +4,14 @@
 
  ## Usage
  
- Run scraper.exe in the output folder (only works on windows).
+ Run scraper.exe in the .\dist folder (only works on windows AFAIK).
  
- If you are not on windows, you will have to install the google, urllib, and bs4 libraries through the terminal and then run the scraper.py file using "python3 [path]\scraper.py"
+ If you are not on windows, you will have to install the google, urllib, and bs4 libraries through the terminal and then run the scraper.pyw file using "python3 [path]\scraper.pyw"
 
  * This script uses the googlesearch module to look up the song and get the url
  * BeautifulSoup4 then makes the html file readable and urllib retrieves the actual html file to print out the lyrics
  * All lyrics are accessed through azlyrics.com
+ * GUI made using tkinter
  
 ## Todo:
 - [X] Add UI using a python library
