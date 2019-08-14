@@ -6,7 +6,7 @@ songLyrics = ''
 
 class searchSong:
     # looks up song name on google
-    def google_search(look):
+    def google_search(self, look):
         try:
             for i in search(look, tld="ca", num=1, stop=1, pause=2):
 
@@ -22,13 +22,13 @@ class searchSong:
             # uses bs4 find all method to extract text from div containing lyrics
             div = soup.find_all("div", {"class": None})
             # converts div text to string and passes into remove_html_tags and return
-            return searchSong.remove_html_tags(str(div))
+            return searchSong.remove_html_tags(self, str(div))
         except:
             # in the case of an error, return an error message
             songLyrics = "Error: Song Not Found \n(Check spelling/Enter Artist Name)"
             return str(songLyrics)
     
-    def remove_html_tags(refine):
+    def remove_html_tags(self, refine):
         # removes html tags from string using regex
         import re
         clean = re.compile('<.*?>')
@@ -43,7 +43,7 @@ class searchSong:
         # return the lyrics as a string
         return str(songLyrics)
       
-    def youtube_link(ytfind):
+    def youtube_link(self, ytfind):
         import webbrowser
         for i in search(ytfind, tld="ca", num=1, stop=1, pause=2):
             webbrowser.open(i, new=2)
