@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['scraper.pyw'],
-             pathex=['C:\\Users\\Adrian\\Desktop\\git upload'],
+             pathex=['C:\\Users\\Adrian\\Desktop\\test'],
              binaries=[],
              datas=[],
              hiddenimports=[],

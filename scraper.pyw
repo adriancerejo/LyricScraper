@@ -10,7 +10,6 @@ song = songs.searchSong()
 # create tkinter objects
 root = tk.Tk()
 root.title("Lyrics Scraper")
-s = tk.Scrollbar(root)
 
 checked = tk.IntVar()
 
@@ -34,16 +33,35 @@ txtSongName = tk.Entry (root)
 txtSongName.place(x=175, y=55)
 
 
+s = tk.Scrollbar(root)
+
+
 def getSong():
     # get input from textbox
     songName = txtSongName.get()
+    def MouseWheelHandler(event):
+        count = 0
 
-    # function to allow user to scroll up
-    def on_mousewheelup(event):
-        canvas.yview_scroll(-1, "units")
-    # function to allow user to scroll down
-    def on_mousewheeldown(event):
-        canvas.yview_scroll(1, "units")
+        def delta(event):
+            if event.num == 5 or event.delta < 0:
+                return -1 
+            return 1 
+        
+        count += delta(event)
+        if count == -1:
+            canvas.yview_scroll(1, "units")
+        elif count == 1:
+            canvas.yview_scroll(-1, "units")
+
+    root.bind("<MouseWheel>",MouseWheelHandler)
+    root.bind("<Button-4>",MouseWheelHandler)
+    root.bind("<Button-5>",MouseWheelHandler)
+    # # function to allow user to scroll up
+    # def on_mousewheelup(event):
+    #     canvas.yview_scroll(-1, "units")
+    # # function to allow user to scroll down
+    # def on_mousewheeldown(event):
+    #     canvas.yview_scroll(1, "units")
 
     # passes song name with additional string at end into google search method from search module
     lyrics = song.google_search(songName + " site:azlyrics.com")
@@ -52,8 +70,8 @@ def getSong():
     canvas.place(relx=0.13, rely=.15)
     canvas.create_text(10, 0, anchor=NW, text=lyrics)
     # listen for scrolls to move window up/down
-    canvas.bind_all("<Button-4>", on_mousewheelup)
-    canvas.bind_all("<Button-5>", on_mousewheeldown)
+    # canvas.bind_all("<Button-4>", on_mousewheelup)
+    # canvas.bind_all("<Button-5>", on_mousewheeldown)
     # other scroll commands
     s.config(command=canvas.yview)
     s.pack(side=tk.RIGHT, fill=tk.Y)
